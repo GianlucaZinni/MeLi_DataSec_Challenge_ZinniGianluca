@@ -3,13 +3,13 @@
 Finds the highest-rated TV series in a given genre via the Hackerrank mock API.
 
 Design choices:
-- Standard library only (urllib, json) per constraints.
-- Iterates pages until the reported total_pages, accumulating the best candidate
-  by highest imdb_rating, breaking ties with alphabetical order of the name.
-- Genre matching is case-insensitive and splits the comma-separated genre field,
-  trimming whitespace to handle multi-genre entries.
-- Returns an empty string on invalid input, missing data, or request/parse errors,
-  as a defensive fallback without changing the required signature.
+    - Standard library only (urllib, json) per constraints.
+    - Iterates pages until the reported total_pages, accumulating the best candidate
+    by highest imdb_rating, breaking ties with alphabetical order of the name.
+    - Genre matching is case-insensitive and splits the comma-separated genre field,
+    trimming whitespace to handle multi-genre entries.
+    - Returns an empty string on invalid input, missing data, or request/parse errors,
+    as a defensive fallback without changing the required signature.
 """
 import json
 import urllib.request
@@ -76,7 +76,9 @@ def bestInGenre(genre: str) -> str:
             except (TypeError, ValueError):
                 continue
 
-            if rating > best_rating or (rating == best_rating and (best_name == "" or name < best_name)):
+            if rating > best_rating or (
+                rating == best_rating and (best_name == "" or name < best_name)
+            ):
                 best_rating = rating
                 best_name = name
 
