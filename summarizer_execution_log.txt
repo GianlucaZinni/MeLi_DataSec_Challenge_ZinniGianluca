@@ -1,0 +1,12 @@
+go run solution_summarizer.go --input sample.txt --type short 
+A fox thought he was wiser than everyone else.  He went off alone to look for a shortcut that, according to him, he knew better than anyone.
+
+go run solution_summarizer.go --input sample.txt --type medium
+A fox thought he was wiser than everyone else.  He walked for hours to find a shortcut that he thought he knew better than anyone.  The other animals, working together, organized themselves into shifts to drink and help each other.  Ashamed, the fox apologized and agreed to join the group.
+
+go run solution_summarizer.go --input sample.txt --type bullet
+- A fox thought he was wiser than everyone else.
+- He always made fun of the other animals and said that no one could teach him anything new.
+- One day, during a great drought, the animals were arguing about how to share the remaining water in the river.   
+- The fox, overconfident, went off alone to look for a shortcut that, according to him, he knew better than anyone.
+- He ended up exhausted and without water.
