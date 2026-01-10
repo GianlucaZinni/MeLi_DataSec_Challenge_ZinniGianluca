@@ -13,6 +13,11 @@ Cada desafío se implementa en un archivo separado, utilizando el nombre de arch
 - `applicant_query.sql`
 - `solution_summarizer.go`
 
+## Pruebas locales
+- Posicionate en la raiz del repo: `cd meli_challenge`.
+- Ejecuta los tests de Minesweeper: `python -m unittest -v test_solution_minesweeper.py`.
+- Los tests usan solo la biblioteca estandar de Python 3.12.10, sin dependencias externas.
+
 ## Contacto
 
 - **Nombre:** Gianluca Zinni
