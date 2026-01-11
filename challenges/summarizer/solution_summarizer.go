@@ -2,12 +2,12 @@
 // CLI: summarize a text file via a public GenAI API (Hugging Face Inference).
 //
 // Design:
-// - Standard library only (net/http, encoding/json, flag, os).
-// - Accepts --input (or positional) for the file path and --type/-t for summary style: short|medium|bullet.
-// - Builds an instruction prompt tailored to the requested type and sends it to the Hugging Face Inference API
-//   (facebook/bart-large-cnn summarization). Docs: https://huggingface.co/docs/api-inference/index
-// - If HUGGINGFACE_TOKEN is set, it is passed as Bearer; otherwise it attempts an unauthenticated request
-//   (may be rate-limited). Errors are reported to stderr with a non-zero exit code.
+//   - Standard library only (net/http, encoding/json, flag, os).
+//   - Accepts --input (or positional) for the file path and --type/-t for summary style: short|medium|bullet.
+//   - Builds an instruction prompt tailored to the requested type and sends it to the Hugging Face Inference API
+//     (facebook/bart-large-cnn summarization). Docs: https://huggingface.co/docs/api-inference/index
+//   - If HUGGINGFACE_TOKEN is set, it is passed as Bearer; otherwise it attempts an unauthenticated request
+//     (may be rate-limited). Errors are reported to stderr with a non-zero exit code.
 package main
 
 import (
@@ -235,24 +235,31 @@ func maxTokensFor(summaryType string) int {
 
 // loadDotEnv loads environment variables from a .env file if present (KEY=VALUE per line, # for comments).
 func loadDotEnv() {
-	content, err := os.ReadFile(".env")
-	if err != nil {
-		return
+	paths := []string{
+		".env",
+		".." + string(os.PathSeparator) + ".env",
+		".." + string(os.PathSeparator) + ".." + string(os.PathSeparator) + ".env",
 	}
-	lines := strings.Split(string(content), "\n")
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if line == "" || strings.HasPrefix(line, "#") {
+	for _, p := range paths {
+		content, err := os.ReadFile(p)
+		if err != nil {
 			continue
 		}
-		parts := strings.SplitN(line, "=", 2)
-		if len(parts) != 2 {
-			continue
-		}
-		key := strings.TrimSpace(parts[0])
-		val := strings.TrimSpace(parts[1])
-		if key != "" {
-			_ = os.Setenv(key, val)
+		lines := strings.Split(string(content), "\n")
+		for _, line := range lines {
+			line = strings.TrimSpace(line)
+			if line == "" || strings.HasPrefix(line, "#") {
+				continue
+			}
+			parts := strings.SplitN(line, "=", 2)
+			if len(parts) != 2 {
+				continue
+			}
+			key := strings.TrimSpace(parts[0])
+			val := strings.TrimSpace(parts[1])
+			if key != "" {
+				_ = os.Setenv(key, val)
+			}
 		}
 	}
 }

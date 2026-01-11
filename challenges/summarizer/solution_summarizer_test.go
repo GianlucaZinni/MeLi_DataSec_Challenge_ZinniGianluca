@@ -1,4 +1,4 @@
-// Go 1.25.5
+// Tests for solution_summarizer.go using Go 1.25.5
 package main
 
 import (

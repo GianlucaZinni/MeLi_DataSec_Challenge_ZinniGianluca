@@ -83,8 +83,9 @@ class TestApplicantQuery(unittest.TestCase):
         self.conn.commit()
 
     def test_query_outputs_expected_customer(self):
-        sql_path = Path("applicant_query.sql")
-        query_text = sql_path.read_text()
+        root = Path(__file__).resolve().parents[1]
+        sql_path = root / "challenges" / "applicant_query.sql"
+        query_text = sql_path.read_text(encoding="utf-8")
         cur = self.conn.cursor()
         cur.execute(query_text)
         rows = cur.fetchall()

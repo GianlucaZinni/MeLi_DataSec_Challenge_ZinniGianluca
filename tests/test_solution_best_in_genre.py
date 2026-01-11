@@ -1,9 +1,13 @@
 # Tests for solution_best_in_genre.py using Python 3.12.10
 import io
 import json
+import os
 import sys
 import unittest
 from unittest.mock import patch
+
+ROOT = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(os.path.join(ROOT, "challenges"))
 
 from solution_best_in_genre import bestInGenre
 

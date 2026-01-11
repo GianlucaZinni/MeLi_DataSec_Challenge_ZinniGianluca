@@ -1,5 +1,10 @@
 # Tests for solution_minesweeper.py using Python 3.12.10
+import os
+import sys
 import unittest
+
+ROOT = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(os.path.join(ROOT, "challenges"))
 
 from solution_minesweeper import count_neighbouring_mines
 
