@@ -6,6 +6,9 @@ Este repositorio contiene las soluciones del desafío técnico.
 - Python 3.12.10
 - Go 1.25.5 (para el summarizer)
 
+## Instrucciones del challenge
+- Documento base del reto: [DataSec_Challenge_EN_v3.md](DataSec_Challenge_EN_v3.md)
+
 ## Estructura
 ```
 .

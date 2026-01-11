@@ -20,7 +20,7 @@ go run solution_summarizer.go -t medium ruta/al/archivo.txt
 go run solution_summarizer.go --input archivo.txt --type bullet
 ```
 - Antes de ejecutar define el token (opciones):
-  - Crear un `.env` copiando `.envexample` y completar `HUGGINGFACE_TOKEN=<tu_token>`.
+  - Crear un `.env` copiando `.env.example` y completar `HUGGINGFACE_TOKEN=<tu_token>`.
   - O bien:
     - PowerShell: `$env:HUGGINGFACE_TOKEN="<tu_token>"`
     - Bash: `export HUGGINGFACE_TOKEN="<tu_token>"`
